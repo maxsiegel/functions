@@ -46,9 +46,11 @@ var welcome = [
      {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Movie 7 Inclusion question (picture plus audio).mp4"]},
      {type: jsPsychImageButtonResponse,
+      stimulus: ["stimuli/Still 7 Inclusion Trial.png"],
+      stimulus_width: 1024,
+      stimulus_height: 768,
       choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150' width='100' height='100'></img>"],
-      stimulus: ["stimuli/Still 7 Inclusion Trial.png"]},
+      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"]},
      {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Movie 8 Great job.mp4"]}];
  timeline = timeline.concat(inclusiontrial)
