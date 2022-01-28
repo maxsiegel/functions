@@ -8,6 +8,7 @@
   <script src="jspsych/plugin-image-keyboard-response.js"></script>
   <script src="jspsych/plugin-image-button-response.js"></script>
 
+  <link rel="stylesheet" href = "experiment.css">
 
 </head>
 
@@ -31,25 +32,25 @@ var welcome = [
       {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Move 1 - Welcome to the Greenhouse.mp4"]},
       { type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 3 -- the flowers bloom because of special lights .mp4"]},
+      stimulus: ["stimuli/Movie 3 -- the flowers bloom because of special lights.mp4"]},
       {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Movie 4 Now you will see two sets of lights.mp4"]},
       {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["Movie 5 There are also two sets of flowers.mp4"]},
+      stimulus: ["stimuli/Movie 5 There are also two sets of flowers.mp4"]},
       {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/greatjob2!.mp4"]}]
       timeline = timeline.concat(welcome);
 
-var inclusiontrial = [
-      {type: jsPsychVideoKeyboardResponse,
+ var inclusiontrial = [
+     {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Movie 7 Inclusion question (picture plus audio).mp4"]},
-      {type: jsPsychImageButtonResponse,
+     {type: jsPsychImageButtonResponse,
       choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png'></img>", "<img src='stimuli/redbutton.png'></img>"],
+      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150' width='100' height='100'></img>"],
       stimulus: ["stimuli/Still 7 Inclusion Trial.png"]},
-      {type: jsPsychVideoKeyboardResponse,
+     {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Movie 8 Great job.mp4"]}];
-      timeline = timeline.concat(inclusiontrial)
+ timeline = timeline.concat(inclusiontrial)
 
 // STEP 1: DEFINE ALL UNIQUE STIMULI
 var stim1A = {
@@ -61,12 +62,12 @@ var stim1B = {
     stimulus: ["stimuli/Movie 10 LINEAR vs. Parabolic prompt.mp4"]
 };
 var stim1C = {
-      type: jsPsychImageButtonResponse,
-      stimulus: ["stimuli/Movie 11 LINEAR vs. parabolic test (audio and still).mp4"],
-      choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png'></img>", "<img src='stimuli/redbutton.png'></img>"]
-};
-var stim1D = {
+     type: jsPsychImageButtonResponse,
+     stimulus: ["stimuli/Movie 11 LINEAR vs. parabolic test (audio and still).mp4"],
+     choices: ["1", "2"],
+     button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150' width='150' height='150'></img>"]
+ };
+ var stim1D = {
     type: jsPsychVideoKeyboardResponse,
     stimulus: ["stimuli/Movie 8 Great job.mp4"]
 };
@@ -87,7 +88,7 @@ var stim2A =
       type: jsPsychImageButtonResponse,
       stimulus: ["stimuli/Movie 14 Linear vs. PARABOLIC test (audio and still).mp4"],
       choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png'></img>", "<img src='stimuli/redbutton.png'></img>"]
+     button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"]
 };
 
 
@@ -105,7 +106,7 @@ var stim2A =
       type: jsPsychImageButtonResponse,
      stimulus: ["stimuli/Movie 17 LINEAR vs. sinusoidal test (audio and still).mp4"],
        choices: ["1", "2"],
-     button_html: ["<img src='stimuli/stripedbutton.png'></img>", "<img src='stimuli/redbutton.png'></img>"],
+     button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
 };
 
 
@@ -124,7 +125,7 @@ var stim2A =
       type: jsPsychImageButtonResponse,
      stimulus: ["stimuli/Movie 20 linear vs. SINUSOIDAL test (still and movie).mp4"],
       choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png'></img>", "<img src='stimuli/redbutton.png'></img>"],
+      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
 };
 
     
@@ -132,38 +133,38 @@ var stim2A =
     var stim5A = 
 {
       type: jsPsychVideoKeyboardResponse,
-       stimulus: ["Movie 21 PARABOLIC vs. sinusoidal setup.mp4"]
+       stimulus: ["stimuli/Movie 21 PARABOLIC vs. sinusoidal setup.mp4"]
 };
     var stim5B =
 {
       type: jsPsychVideoKeyboardResponse,
-      stimulus: ["Movie 22 PARABOLIC vs. sinusoidal prompt.mp4"]
+      stimulus: ["stimuli/Movie 22 PARABOLIC vs. sinusoidal prompt.mp4"]
 };
     var stim5C =
 {
     type: jsPsychImageButtonResponse,
-       stimulus: ["Movie 23 PARABOLIC vs. sinusoidal test (still and movie).mp4"],
+       stimulus: ["stimuli/Movie 23 PARABOLIC vs. sinusoidal test (still and movie).mp4"],
        choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png'></img>", "<img src='stimuli/redbutton.png'></img>"],
+      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
 };
 
 
     var stim6A = 
 {
       type: jsPsychVideoKeyboardResponse,
-       stimulus: ["Movie 24 parabolic vs. SINUSOIDAL setup.mp4"]
+       stimulus: ["stimuli/Movie 24 parabolic vs. SINUSOIDAL setup.mp4"]
 };
     var stim6B =
 {
       type: jsPsychVideoKeyboardResponse,
-      stimulus: ["Movie 25 parabolic vs. SINUSOIDAL prompt.mp4"]
+      stimulus: ["stimuli/Movie 25 parabolic vs. SINUSOIDAL prompt.mp4"]
 };
     var stim6C =
 {
     type: jsPsychImageButtonResponse,
-       stimulus: ["Movie 26 parabolic vs. SINUSOIDAL test (still and audio).mp4"],
+       stimulus: ["stimuli/Movie 26 parabolic vs. SINUSOIDAL test (still and audio).mp4"],
        choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png'></img>", "<img src='stimuli/redbutton.png'></img>"],
+      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
 };
   
 
@@ -229,7 +230,7 @@ var stim2A =
   //     type: jsPsychImageButtonResponse,
   //     stimulus: ["stimuli/Movie 11 LINEAR vs. parabolic test (audio and still).mp4"],
   //     choices: ["1", "2"],
-  //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png'></img>"],
+  //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
   //   },
   //   {
   //     type: jsPsychVideoKeyboardResponse,
@@ -251,7 +252,7 @@ var stim2A =
   // //     type: jsPsychImageButtonResponse,
   // //     stimulus: ["stimuli/Movie 14 Linear vs. PARABOLIC test (audio and still).mp4"],
   // //     choices: ["1", "2"],
-  // //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png'></img>"],
+  // //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
   // //   },
   // //   {
   // //     type: jsPsychVideoKeyboardResponse,
@@ -274,7 +275,7 @@ var stim2A =
   // //     type: jsPsychImageButtonResponse,
   // //     stimulus: ["stimuli/Movie 17 LINEAR vs. sinusoidal test (audio and still).mp4"],
   // //     choices: ["1", "2"],
-  // //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png'></img>"],
+  // //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
     
   // //   },
   // //   {
@@ -297,7 +298,7 @@ var stim2A =
   // //     type: jsPsychImageButtonResponse,
   // //     stimulus: ["stimuli/Movie 20 linear vs. SINUSOIDAL test (still and movie).mp4"],
   // //     choices: ["1", "2"],
-  // //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png'></img>"],
+  // //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
   // //   },
   // //   {
   // //     type: jsPsychVideoKeyboardResponse,
@@ -307,6 +308,15 @@ var stim2A =
   // // timeline.push(trial4);
   jsPsych.run(timeline);
 
+ function saveData(name, data) {
+     var xhr = new XMLHttpRequest();
+     xhr.open('POST', 'record_data.php');
+     xhr.setRequestHeader('Content-Type', 'application/json');
+     xhr.send(JSON.stringify({
+         filename: name,
+         data: data
+     }));
+ }
 </script>
 
 </html>
