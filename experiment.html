@@ -24,28 +24,30 @@
               
 
 const jsPsych = initJsPsych({override_safe_mode: true});
+//  StartingSepts: DEFINE TIMELINE
+var timeline = [];
 
 var welcome = [
       {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Move 1 - Welcome to the Greenhouse.mp4"]},
-      { type: jsPsychVideoeKeyboardResponse,
+      { type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Movie 3 -- the flowers bloom because of special lights .mp4"]},
       {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Movie 4 Now you will see two sets of lights.mp4"]},
       {type: jsPsychVideoKeyboardResponse,
       stimulus: ["Movie 5 There are also two sets of flowers.mp4"]},
       {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 6 Let's try it.mp4"]}]
+      stimulus: ["stimuli/greatjob2!.mp4"]}]
+      timeline = timeline.concat(welcome);
 
 var inclusiontrial = [
       {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 7 Inclusion question (picture plus audio).mp4"]
-},
-{ type: jsPsychImageButtonResponse,
-      stimulus: ["stimuli/Still 7 Inclusion Trial.png"]
-},
-{ type: jsPsychVideoeKeyboardResponse,
-stimulus: ["stimuli/Movie 8 Great job.mp4"]}],
+      stimulus: ["stimuli/Movie 7 Inclusion question (picture plus audio).mp4"]},
+      {type: jsPsychImageButtonResponse,
+      stimulus: ["stimuli/Still 7 Inclusion Trial.png"]},
+      {type: jsPsychVideoKeyboardResponse,
+      stimulus: ["stimuli/Movie 8 Great job.mp4"]}];
+      timeline = timeline.concat(inclusiontrial)
 
 // STEP 1: DEFINE ALL UNIQUE STIMULI
 var stim1A = {
@@ -200,8 +202,7 @@ var stim2A =
     trial6.push(stim6C)
     trial6.push(stim1D) 
 
-    //  STEP 3: DEFINE TIMELINE
-    var timeline = [];
+
     // Put trials into a list
     timeline= timeline.concat(trial1, trial2, trial3, trial4, trial5, trial6)
     // shuffle the list of trials (currently not seeming to work)
@@ -210,8 +211,8 @@ var stim2A =
     console.log(timeline)
 
     var end =
-          type: jsPsychVideoKeyboardResponse,
-          stimulus: ["stimuli/MOVIE -- THE END.m4v"]
+          {type: jsPsychVideoKeyboardResponse,
+          stimulus: ["stimuli/MOVIE -- THE END.m4v"]}
 
   // var trial1 = [
   //   {
