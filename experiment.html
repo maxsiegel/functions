@@ -7,6 +7,7 @@
   <script src="jspsych/plugin-video-keyboard-response.js"></script>
   <script src="jspsych/plugin-image-keyboard-response.js"></script>
   <script src="jspsych/plugin-image-button-response.js"></script>
+  <script src="jspsych/plugin-html-keyboard-response.js"></script>
 
   <link rel="stylesheet" href = "experiment.css">
 
@@ -306,7 +307,6 @@ var stim2A =
   // //   }
   // // ];
   // // timeline.push(trial4);
-  jsPsych.run(timeline);
 
  function saveData(name, data) {
      var xhr = new XMLHttpRequest();
@@ -317,6 +317,25 @@ var stim2A =
          data: data
      }));
  }
+
+ function done() {
+     var out = {
+         type: jsPsychHtmlKeyboardResponse,
+         // stimulus: function() {
+         //     return 'Done - thank you!'
+         //
+         stimulus: "done",
+
+         on_start: function() {
+             saveData('test', jsPsych.data.get().csv());
+         }
+     }
+
+     return out
+ }
+ timeline.push(done())
+  jsPsych.run(timeline);
+
 </script>
 
 </html>
