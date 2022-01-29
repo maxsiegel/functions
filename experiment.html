@@ -418,16 +418,20 @@ var stim2A =
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
       response_allowed_while_playing: true,
       on_start: function() {
-          saveData(getFormattedDate, jsPsych.data.get().csv());
+          saveData(getFormattedDate(), jsPsych.data.get().csv());
       }
      }
      timeline.push(end);
 
 
  var debrief = 
-	{type: jsPsychHtmlKeyboardResponse,
-	stimulus: "The goal of this study is to understand what visual features children use in combination with their background knowledge to identify the underlying structure of causes and effects. \n\nDuring the game you and your child played, we asked children about their intuitions about multiple different features: we asked whether they thought certain flowers bloom using different lights to investigate how the blooming might depend on how much lights change in brightness, how many times lights go from on to off, and how fast or slow lights change. \n\nNone of these features have been tested before on children of this age, so we are interested in what your child's intuitions tell them about how these different stories are linked, rather than whether or not they chose what you might have considered to be the correct answer. By understanding which features are useful and intuitive to children, we can understand more about how they can use these rich features to draw connections between objects as a way to make sense of their world. \n\nThank you so much for participating! You will be emailed a $5 Amazon gift card within 3 days of participation. Please don't hesitate to contact me at nhcoates@mit.edu if you have any additional questions or feedback.",
-choices: ["jsPsych.NO_KEYS"]
+     {type: jsPsychHtmlKeyboardResponse,
+      stimulus: "The goal of this study is to understand what visual features children use in combination with their background knowledge to identify the underlying structure of causes and effects. \n\nDuring the game you and your child played, we asked children about their intuitions about multiple different features: we asked whether they thought certain flowers bloom using different lights to investigate how the blooming might depend on how much lights change in brightness, how many times lights go from on to off, and how fast or slow lights change. \n\nNone of these features have been tested before on children of this age, so we are interested in what your child's intuitions tell them about how these different stories are linked, rather than whether or not they chose what you might have considered to be the correct answer. By understanding which features are useful and intuitive to children, we can understand more about how they can use these rich features to draw connections between objects as a way to make sense of their world. \n\nThank you so much for participating! You will be emailed a $5 Amazon gift card within 3 days of participation. Please don't hesitate to contact me at nhcoates@mit.edu if you have any additional questions or feedback.",
+      choices: ["jsPsych.NO_KEYS"],
+      on_start: function() {
+          saveData(getFormattedDate, jsPsych.data.get().csv());
+      }
+
 }
 timeline.push(debrief);
 
@@ -453,24 +457,6 @@ timeline.push(debrief);
 
      return d;
  }
-
- function done() {
-     var out = {
-         type: jsPsychHtmlKeyboardResponse,
-         // stimulus: function() {
-         //     return 'Done - thank you!'
-         //
-         stimulus: "done",
-
-         on_start: function() {
-             saveData(getFormattedDate, jsPsych.data.get().csv());
-         }
-     }
-
-     return out
- }
-
- timeline.push(done())
 
 timeline.splice(20, 0, halfway)
 
