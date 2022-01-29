@@ -300,7 +300,6 @@ var stim2A =
  trial6.push(stim1D)
 
  /* StartingSteps: DEFINE TIMELINE */
- /* var timeline = []; */
  /* Put trials into a list */
  trials = [trial1, trial2, trial3, trial4, trial5, trial6]
  rand_order = jsPsych.randomization.shuffle(trials)
@@ -324,7 +323,6 @@ timeline.push(debrief);
  // shuffle the list of trials (currently not seeming to work)
  /* var myArray = [trial1,trial2,trial3,trial4,trial5,trial6];
   *    var shuffledArray = jsPsych.randomization.shuffle(myArray); */
-    console.log(timeline)
 
  function saveData(name, data) {
      var xhr = new XMLHttpRequest();
