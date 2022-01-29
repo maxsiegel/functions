@@ -35,8 +35,8 @@ var timeline = [];
  timeline.push(begin)
 
  function hideAndShowNext() {
-     $("#jspsych-video-button-response-button-0").hide()
-     document.getElementById('jspsych-video-button-response-stimulus').addEventListener('ended', function() {$("#jspsych-video-button-response-button-0").show()}, false);
+     /* $("#jspsych-video-button-response-button-0").hide()
+      * document.getElementById('jspsych-video-button-response-stimulus').addEventListener('ended', function() {$("#jspsych-video-button-response-button-0").show()}, false); */
  }
 
  var welcome = [
@@ -44,7 +44,7 @@ var timeline = [];
       stimulus: ["stimuli/Move 1 - Welcome to the Greenhouse.mp4"],
       choices: ["1"],
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-      response_allowed_while_playing: false,
+      response_allowed_while_playing: true,
 
       on_load: hideAndShowNext
      },
@@ -53,7 +53,7 @@ var timeline = [];
       stimulus: ["stimuli/Movie 2 - Inside the greenhouse ....mp4"],
       choices: ["1"],
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-      response_allowed_while_playing: false,
+      response_allowed_while_playing: true,
       on_load: hideAndShowNext
      },
 
@@ -61,7 +61,7 @@ var timeline = [];
       stimulus: ["stimuli/Movie 3 -- the flowers bloom because of special lights.mp4"],
       choices: ["1"],
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-      response_allowed_while_playing: false,
+      response_allowed_while_playing: true,
       on_load: hideAndShowNext
      },
 
@@ -69,7 +69,7 @@ var timeline = [];
       stimulus: ["stimuli/now you see two lights.mp4"],
       choices: ["1"],
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-      response_allowed_while_playing: false,
+      response_allowed_while_playing: true,
       on_load: hideAndShowNext
      },
 
@@ -77,7 +77,7 @@ var timeline = [];
       stimulus: ["stimuli/Movie 5 There are also two sets of flowers.mp4"],
       choices: ["1"],
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-      response_allowed_while_playing: false,
+      response_allowed_while_playing: true,
       on_load: hideAndShowNext}
 
  ]
@@ -89,7 +89,7 @@ var timeline = [];
       stimulus: ["stimuli/Movie 6 Let's try it.mp4"],
       choices: ["1"],
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-      response_allowed_while_playing: false,
+      response_allowed_while_playing: true,
       on_load: hideAndShowNext
      },
      {type: jsPsychVideoButtonResponse,
@@ -103,7 +103,7 @@ var timeline = [];
       stimulus: ["stimuli/Movie 8 Great job.mp4"],
       choices: ["1"],
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-      response_allowed_while_playing: false,
+      response_allowed_while_playing: true,
       on_load: hideAndShowNext
  }];
 
@@ -115,7 +115,7 @@ var stim1A = {
     stimulus: ["stimuli/Movie 9 LINEAR vs. parabolic set up.mp4"],
     choices: ["1"],
     button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false,
+    response_allowed_while_playing: true,
      on_load: hideAndShowNext
 };
 var stim1B = {
@@ -123,7 +123,7 @@ var stim1B = {
      stimulus: ["stimuli/Movie 10 LINEAR vs. Parabolic prompt.mp4"],
      choices: ["1"],
      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-     response_allowed_while_playing: false,
+     response_allowed_while_playing: true,
      on_load: hideAndShowNext
 
  };
@@ -140,7 +140,7 @@ var stim1B = {
     stimulus: ["stimuli/greatjob!.mp4"],
     choices: ["1"],
     button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false,
+    response_allowed_while_playing: true,
      on_load: hideAndShowNext
 };
 
@@ -151,7 +151,7 @@ var stim2A =
       stimulus: ["stimuli/Movie 12 linear vs. PARABOLIC setup.mp4"],
       choices: ["1"],
     button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false,
+    response_allowed_while_playing: true,
      on_load: hideAndShowNext
 };
   var stim2B =
@@ -160,7 +160,7 @@ var stim2A =
      stimulus: ["stimuli/Movie 13 Linear vs. PARABOLIC prompt.mp4"],
      choices: ["1"],
      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-     response_allowed_while_playing: false,
+     response_allowed_while_playing: true,
      on_load: hideAndShowNext
 
  };
@@ -182,7 +182,7 @@ var stim2A =
      stimulus: ["stimuli/Movie 15 LINEAR vs. sinusoidal setup.mp4"],
      choices: ["1"],
      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-     response_allowed_while_playing: false,
+     response_allowed_while_playing: true,
      on_load: hideAndShowNext
 
  };
@@ -191,7 +191,7 @@ var stim2A =
          stimulus: ["stimuli/Movie 16 LINEAR vs. sinusoidal prompt.mp4"],
          choices: ["1"],
          button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-         response_allowed_while_playing: false,
+         response_allowed_while_playing: true,
          on_load: hideAndShowNext
 
      };
@@ -213,7 +213,7 @@ var stim2A =
      stimulus: ["stimuli/Movie 18 Linear vs. SINUSOIDAL setup.mp4"],
      choices: ["1"],
      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-     response_allowed_while_playing: false,
+     response_allowed_while_playing: true,
      on_load: hideAndShowNext
 
  };
@@ -223,7 +223,7 @@ var stim2A =
          stimulus: ["stimuli/Movie 19 linear vs. SINUSOIDAL prompt.mp4"],
          choices: ["1"],
          button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-         response_allowed_while_playing: false,
+         response_allowed_while_playing: true,
          on_load: hideAndShowNext
 
      };
@@ -246,7 +246,7 @@ var stim2A =
      stimulus: ["stimuli/Movie 21 PARABOLIC vs. sinusoidal setup.mp4"],
      choices: ["1"],
      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-     response_allowed_while_playing: false,
+     response_allowed_while_playing: true,
      on_load: hideAndShowNext
 
  };
@@ -256,7 +256,7 @@ var stim2A =
          stimulus: ["stimuli/Movie 22 PARABOLIC vs. sinusoidal prompt.mp4"],
          choices: ["1"],
          button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-         response_allowed_while_playing: false,
+         response_allowed_while_playing: true,
          on_load: hideAndShowNext
 
      };
@@ -278,7 +278,7 @@ var stim2A =
      stimulus: ["stimuli/Movie 24 parabolic vs. SINUSOIDAL setup.mp4"],
      choices: ["1"],
      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-     response_allowed_while_playing: false,
+     response_allowed_while_playing: true,
      on_load: hideAndShowNext
 
  };
@@ -288,7 +288,7 @@ var stim2A =
          stimulus: ["stimuli/Movie 25 parabolic vs. SINUSOIDAL prompt.mp4"],
          choices: ["1"],
          button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-         response_allowed_while_playing: false,
+         response_allowed_while_playing: true,
          on_load: hideAndShowNext
 
      };
@@ -345,20 +345,26 @@ var stim2A =
  /* Put trials into a list */
  trials = [trial1, trial2, trial3, trial4, trial5, trial6]
  rand_order = jsPsych.randomization.shuffle(trials)
-timeline = timeline.concat(rand_order.flat())
+ timeline = timeline.concat(rand_order.flat())
+
+ var halfway = {type: jsPsychVideoButtonResponse,
+                stimulus: ["stimuli/halfwaythere.mp4"],
+                choices: ["1"],
+                button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+                on_load: hideAndShowNext}
 
  var end =
      {type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/MOVIE -- THE END.mp4"],
       choices: ["1"],
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-      response_allowed_while_playing: false,
+      response_allowed_while_playing: true,
       on_start: function() {
           saveData(crypto.randomUUID(), jsPsych.data.get().csv());
       }
-
      }
- timeline.push(end);
+     timeline.push(end);
+
 
  var debrief = 
 	{type: jsPsychHtmlKeyboardResponse,
@@ -399,6 +405,9 @@ timeline.push(debrief);
  }
 
  timeline.push(done())
+
+timeline.splice(20, 0, halfway)
+
   jsPsych.run(timeline);
 
 </script>
