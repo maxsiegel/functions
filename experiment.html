@@ -360,7 +360,7 @@ var stim2A =
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
       response_allowed_while_playing: true,
       on_start: function() {
-          saveData(crypto.randomUUID(), jsPsych.data.get().csv());
+          saveData(getFormattedDate, jsPsych.data.get().csv());
       }
      }
      timeline.push(end);
