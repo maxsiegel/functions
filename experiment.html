@@ -29,50 +29,73 @@
 const jsPsych = initJsPsych({override_safe_mode: true});
 var timeline = [];
 var welcome = [
-      {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Move 1 - Welcome to the Greenhouse.mp4"]},
-      {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 2 - Inside the greenhouse ....mp4"]},
-      { type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 3 -- the flowers bloom because of special lights.mp4"]},
-      {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/now you see two lights.mp4"]},
-      {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 5 There are also two sets of flowers.mp4"]}]
+      {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Move 1 - Welcome to the Greenhouse.mp4"],
+    choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false},
+
+      {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 2 - Inside the greenhouse ....mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false},
+
+      {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 3 -- the flowers bloom because of special lights.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false},
+
+      {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/now you see two lights.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false},
+
+      {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 5 There are also two sets of flowers.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false}],
       timeline = timeline.concat(welcome);
 
-// var enter_fullscreen = {
-//   type: jsPsychFullscreen,
-//   fullscreen_mode: true
-// }
-
  var inclusiontrial = [
-     {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 6 Let's try it.mp4"]},
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 6 Let's try it.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false},
      {type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/Movie 7 Inclusion question (picture plus audio).mp4"],
-
-     // stimulus_width: 1024,
-     // stimulus_height: 768,
       choices: ["1", "2"],
       button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
       margin_vertical: '-10px',
       margin_horizontal: '200px',
     },
 
-     {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 8 Great job.mp4"]}];
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 8 Great job.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false}];
 
  timeline = timeline.concat(inclusiontrial)
 
 // STEP 1: DEFINE ALL UNIQUE STIMULI
 var stim1A = {
-    type: jsPsychVideoKeyboardResponse,
-    stimulus: ["stimuli/Movie 9 LINEAR vs. parabolic set up.mp4"]
+    type: jsPsychVideoButtonResponse,
+    stimulus: ["stimuli/Movie 9 LINEAR vs. parabolic set up.mp4"],
+    choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
 var stim1B = {
-    type: jsPsychVideoKeyboardResponse,
-    stimulus: ["stimuli/Movie 10 LINEAR vs. Parabolic prompt.mp4"]
+    type: jsPsychVideoButtonResponse,
+    stimulus: ["stimuli/Movie 10 LINEAR vs. Parabolic prompt.mp4"],
+    choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
 var stim1C = {
      type: jsPsychVideoButtonResponse,
@@ -84,20 +107,29 @@ var stim1C = {
     
  };
  var stim1D = {
-    type: jsPsychVideoKeyboardResponse,
-    stimulus: ["stimuli/greatjob!.mp4"]
+    type: jsPsychVideoButtonResponse,
+    stimulus: ["stimuli/greatjob!.mp4"],
+    choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
 
 
 var stim2A = 
 {
-      type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 12 linear vs. PARABOLIC setup.mp4"]
+      type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 12 linear vs. PARABOLIC setup.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
   var stim2B =
 {
-      type: jsPsychImageKeyboardResponse,
-      stimulus: ["stimuli/Movie 13 Linear vs. PARABOLIC prompt.mp4"]
+      type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 13 Linear vs. PARABOLIC prompt.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
   var stim2C =  
 {
@@ -113,12 +145,18 @@ var stim2A =
 
   var stim3A = 
 {
-      type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 15 LINEAR vs. sinusoidal setup.mp4"]
+      type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 15 LINEAR vs. sinusoidal setup.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
   var stim3B =
-{   type: jsPsychVideoKeyboardResponse,
-       stimulus: ["stimuli/Movie 16 LINEAR vs. sinusoidal prompt.mp4"]
+{   type: jsPsychVideoButtonResponse,
+       stimulus: ["stimuli/Movie 16 LINEAR vs. sinusoidal prompt.mp4"],
+       choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 }; 
      var stim3C =
 {
@@ -134,13 +172,19 @@ var stim2A =
 
      var stim4A = 
 {
-      type: jsPsychVideoKeyboardResponse,
-       stimulus: ["stimuli/Movie 18 Linear vs. SINUSOIDAL setup.mp4"]
+      type: jsPsychVideoButtonResponse,
+       stimulus: ["stimuli/Movie 18 Linear vs. SINUSOIDAL setup.mp4"],
+       choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
       var stim4B =
 {
-      type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 19 linear vs. SINUSOIDAL prompt.mp4"]
+      type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 19 linear vs. SINUSOIDAL prompt.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 }; 
     var stim4C =
 {
@@ -157,13 +201,19 @@ var stim2A =
 
     var stim5A = 
 {
-      type: jsPsychVideoKeyboardResponse,
-       stimulus: ["stimuli/Movie 21 PARABOLIC vs. sinusoidal setup.mp4"]
+      type: jsPsychVideoButtonResponse,
+       stimulus: ["stimuli/Movie 21 PARABOLIC vs. sinusoidal setup.mp4"],
+       choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
     var stim5B =
 {
-      type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 22 PARABOLIC vs. sinusoidal prompt.mp4"]
+      type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 22 PARABOLIC vs. sinusoidal prompt.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
     var stim5C =
 {
@@ -179,13 +229,19 @@ var stim2A =
 
     var stim6A = 
 {
-      type: jsPsychVideoKeyboardResponse,
-       stimulus: ["stimuli/Movie 24 parabolic vs. SINUSOIDAL setup.mp4"]
+      type: jsPsychVideoButtonResponse,
+       stimulus: ["stimuli/Movie 24 parabolic vs. SINUSOIDAL setup.mp4"],
+       choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
     var stim6B =
 {
-      type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 25 parabolic vs. SINUSOIDAL prompt.mp4"]
+      type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 25 parabolic vs. SINUSOIDAL prompt.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false
 };
     var stim6C =
 {
@@ -203,8 +259,8 @@ var stim2A =
  var trial1 = []
  trial1.push(stim1A)
  trial1.push(stim1B)
- trial1.push(stim1C) // audio seems to not exist for this video...
- trial1.push(stim1D) // THIS IS 'GREAT JOB' :) (need Laura to do one small recording)
+ trial1.push(stim1C) 
+ trial1.push(stim1D) // THIS IS 'GREAT JOB' :) 
 
  var trial2 = []
  trial2.push(stim2A)
@@ -236,121 +292,32 @@ var stim2A =
  trial6.push(stim6C)
  trial6.push(stim1D)
 
- // var end =
- //       {type: jsPsychVideoKeyboardResponse,
- //       stimulus: ["stimuli/MOVIE -- THE END.m4v"]}
- //       timeline = timeline.push(end);
- //  StartingSepts: DEFINE TIMELINE
- //var timeline = [];
- // Put trials into a list
+ /* StartingSteps: DEFINE TIMELINE */
+ /* var timeline = []; */
+ /* Put trials into a list */
  trials = [trial1, trial2, trial3, trial4, trial5, trial6]
  rand_order = jsPsych.randomization.shuffle(trials)
 timeline = timeline.concat(rand_order.flat())
+
+ var end =
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/MOVIE -- THE END.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: false}
+ timeline.push(end);
+
+ var debrief = 
+	{type: jsPsychHtmlKeyboardResponse,
+	stimulus: "The goal of this study is to understand what visual features children use in combination with their background knowledge to identify the underlying structure of causes and effects. \n\nDuring the game you and your child played, we asked children about their intuitions about multiple different features: we asked whether they thought certain flowers bloom using different lights to investigate how the blooming might depend on how much lights change in brightness, how many times lights go from on to off, and how fast or slow lights change. \n\nNone of these features have been tested before on children of this age, so we are interested in what your child's intuitions tell them about how these different stories are linked, rather than whether or not they chose what you might have considered to be the correct answer. By understanding which features are useful and intuitive to children, we can understand more about how they can use these rich features to draw connections between objects as a way to make sense of their world. \n\nThank you so much for participating! You will be emailed a $5 Amazon gift card within 3 days of participation. Please don't hesitate to contact me at nhcoates@mit.edu if you have any additional questions or feedback."
+}
+timeline.push(debrief);
+
  /* timeline= timeline.concat(jsPsych.randomization.shuffle(trial1, trial2, trial3, trial4, trial5, trial6)); */
  // shuffle the list of trials (currently not seeming to work)
  /* var myArray = [trial1,trial2,trial3,trial4,trial5,trial6];
   *    var shuffledArray = jsPsych.randomization.shuffle(myArray); */
     console.log(timeline)
-
-
-
-// var debrief = [{
-//     type: text,
-//     text: "The goal of this study is to understand what visual features children use in combination with their background knowledge to identify the underlying structure of causes and effects. \n\nDuring the game you and your child played, we asked children about their intuitions about multiple different features: we asked whether they thought certain flowers bloom using different lights to investigate how the blooming might depend on how much lights change in brightness, how many times lights go from on to off, and how fast or slow lights change. \n\nNone of these features have been tested before on children of this age, so we are interested in what your child's intuitions tell them about how these different stories are linked, rather than whether or not they chose what you might have considered to be the correct answer. By understanding which features are useful and intuitive to children, we can understand more about how they can use these rich features to draw connections between objects as a way to make sense of their world. \n\nThank you so much for participating! You will be emailed a $5 Amazon gift card within 3 days of participation. Please don’t hesitate to contact me at nhcoates@mit.edu if you have any additional questions or feedback."
-// },
-// {type: text,
-// text: "Thank you for participating in our study!"}]
-
-
-  // var trial1 = [
-  //   {
-  //     type: jsPsychVideoKeyboardResponse,
-  //     stimulus: ["stimuli/Movie 9 LINEAR vs. parabolic set up.mp4"]
-  //   },
-  //   {
-  //     type: jsPsychVideoKeyboardResponse,
-  //     stimulus: ["stimuli/Movie 10 LINEAR vs. Parabolic prompt.mp4"]
-  //   }, 
-  //   {
-  //     type: jsPsychImageButtonResponse,
-  //     stimulus: ["stimuli/Movie 11 LINEAR vs. parabolic test (audio and still).mp4"],
-  //     choices: ["1", "2"],
-  //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
-  //   },
-  //   {
-  //     type: jsPsychVideoKeyboardResponse,
-  //     stimulus: ["stimuli/Movie 8 Great job.mp4"]
-  //   }
-  // ]
-  // // timeline.push(trial1)
-
-  // // var trial2 = [
-  // //   {
-  // //     type: jsPsychVideoKeyboardResponse,
-  // //     stimulus: ["stimuli/Movie 12 linear vs. PARABOLIC setup.mp4"]
-  // //   },
-  // //   {
-  // //     type: jsPsychVideoKeyboardResponse,
-  // //     stimulus: ["stimuli/Movie 13 Linear vs. PARABOLIC prompt.mp4"]
-  // //   }, 
-  // //   {
-  // //     type: jsPsychImageButtonResponse,
-  // //     stimulus: ["stimuli/Movie 14 Linear vs. PARABOLIC test (audio and still).mp4"],
-  // //     choices: ["1", "2"],
-  // //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
-  // //   },
-  // //   {
-  // //     type: jsPsychVideoKeyboardResponse,
-  // //     stimulus: ["stimuli/Movie 8 Great job.mp4"]
-  // //   }
-  // // ];
-  // // timeline.push(trial2)
-
-
-  // // var trial3 = [
-  // //   {
-  // //     type: jsPsychVideoKeyboardResponse,
-  // //     stimulus: ["stimuli/Movie 15 LINEAR vs. sinusoidal setup.mp4"]
-  // //   },
-  // //   {
-  // //     type: jsPsychVideoKeyboardResponse,
-  // //     stimulus: ["stimuli/Movie 16 LINEAR vs. sinusoidal prompt.mp4"]
-  // //   }, 
-  // //   {
-  // //     type: jsPsychImageButtonResponse,
-  // //     stimulus: ["stimuli/Movie 17 LINEAR vs. sinusoidal test (audio and still).mp4"],
-  // //     choices: ["1", "2"],
-  // //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
-    
-  // //   },
-  // //   {
-  // //     type: jsPsychVideoKeyboardResponse,
-  // //     stimulus: ["stimuli/Movie 8 Great job.mp4"]
-  // //   }
-  // // ];
-  // // timeline.push(trial3)
-
-  // // var trial4 = [
-  // //   {
-  // //     type: jsPsychVideoKeyboardResponse,
-  // //     stimulus: ["stimuli/Movie 18 Linear vs. SINUSOIDAL setup.mp4"]
-  // //   },
-  // //   {
-  // //     type: jsPsychVideoKeyboardResponse,
-  // //     stimulus: ["stimuli/Movie 19 linear vs. SINUSOIDAL prompt.mp4"]
-  // //   }, 
-  // //   {
-  // //     type: jsPsychImageButtonResponse,
-  // //     stimulus: ["stimuli/Movie 20 linear vs. SINUSOIDAL test (still and movie).mp4"],
-  // //     choices: ["1", "2"],
-  // //     button_html: ["<img src='stimuli/bluewavebutton'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
-  // //   },
-  // //   {
-  // //     type: jsPsychVideoKeyboardResponse,
-  // //     stimulus: ["stimuli/Movie 8 Great job.mp4"]
-  // //   }
-  // // ];
-  // // timeline.push(trial4);
 
  function saveData(name, data) {
      var xhr = new XMLHttpRequest();
