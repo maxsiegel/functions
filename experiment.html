@@ -387,6 +387,14 @@ timeline.push(debrief);
          data: data
      }));
  }
+ function getFormattedDate() {
+
+     var d = new Date();
+
+     d = d.getFullYear() + "-" + ('0' + (d.getMonth() + 1)).slice(-2) + "-" + ('0' + d.getDate()).slice(-2) + "_" + ('0' + d.getHours()).slice(-2) + "\:" + ('0' + d.getMinutes()).slice(-2) + "\:" + ('0' + d.getSeconds()).slice(-2);
+
+     return d;
+ }
 
  function done() {
      var out = {
@@ -397,7 +405,7 @@ timeline.push(debrief);
          stimulus: "done",
 
          on_start: function() {
-             saveData(crypto.randomUUID(), jsPsych.data.get().csv());
+             saveData(getFormattedDate, jsPsych.data.get().csv());
          }
      }
 
