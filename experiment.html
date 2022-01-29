@@ -8,6 +8,7 @@
   <script src="jspsych/plugin-image-keyboard-response.js"></script>
   <script src="jspsych/plugin-image-button-response.js"></script>
   <script src="jspsych/plugin-html-keyboard-response.js"></script>
+  <script src="jspsych/plugin-video-button-response.js"></script>
 
   <link rel="stylesheet" href = "experiment.css">
 
@@ -26,33 +27,42 @@
               
 
 const jsPsych = initJsPsych({override_safe_mode: true});
-//  StartingSepts: DEFINE TIMELINE
 var timeline = [];
-
 var welcome = [
       {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Move 1 - Welcome to the Greenhouse.mp4"]},
+      {type: jsPsychVideoKeyboardResponse,
+      stimulus: ["stimuli/Movie 2 - Inside the greenhouse ....mp4"]},
       { type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Movie 3 -- the flowers bloom because of special lights.mp4"]},
       {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 4 Now you will see two sets of lights.mp4"]},
+      stimulus: ["stimuli/now you see two lights.mp4"]},
       {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 5 There are also two sets of flowers.mp4"]},
-      {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/greatjob2!.mp4"]}]
+      stimulus: ["stimuli/Movie 5 There are also two sets of flowers.mp4"]}]
       timeline = timeline.concat(welcome);
+
+// var enter_fullscreen = {
+//   type: jsPsychFullscreen,
+//   fullscreen_mode: true
+// }
 
  var inclusiontrial = [
      {type: jsPsychVideoKeyboardResponse,
-      stimulus: ["stimuli/Movie 7 Inclusion question (picture plus audio).mp4"]},
-     {type: jsPsychImageButtonResponse,
-      stimulus: ["stimuli/Still 7 Inclusion Trial.png"],
-      stimulus_width: 1024,
-      stimulus_height: 768,
+      stimulus: ["stimuli/Movie 6 Let's try it.mp4"]},
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 7 Inclusion question (picture plus audio).mp4"],
+
+     // stimulus_width: 1024,
+     // stimulus_height: 768,
       choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"]},
+      button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+      margin_vertical: '-10px',
+      margin_horizontal: '200px',
+    },
+
      {type: jsPsychVideoKeyboardResponse,
       stimulus: ["stimuli/Movie 8 Great job.mp4"]}];
+
  timeline = timeline.concat(inclusiontrial)
 
 // STEP 1: DEFINE ALL UNIQUE STIMULI
@@ -65,14 +75,17 @@ var stim1B = {
     stimulus: ["stimuli/Movie 10 LINEAR vs. Parabolic prompt.mp4"]
 };
 var stim1C = {
-     type: jsPsychImageButtonResponse,
+     type: jsPsychVideoButtonResponse,
      stimulus: ["stimuli/Movie 11 LINEAR vs. parabolic test (audio and still).mp4"],
      choices: ["1", "2"],
-     button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150' width='150' height='150'></img>"]
+     button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150' width='150' height='150'></img>"],
+     margin_vertical: '-10px',
+    margin_horizontal: '200px',
+    
  };
  var stim1D = {
     type: jsPsychVideoKeyboardResponse,
-    stimulus: ["stimuli/Movie 8 Great job.mp4"]
+    stimulus: ["stimuli/greatjob!.mp4"]
 };
 
 
@@ -83,15 +96,18 @@ var stim2A =
 };
   var stim2B =
 {
-      type: jsPsychVideoKeyboardResponse,
+      type: jsPsychImageKeyboardResponse,
       stimulus: ["stimuli/Movie 13 Linear vs. PARABOLIC prompt.mp4"]
 };
   var stim2C =  
 {
-      type: jsPsychImageButtonResponse,
+      type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/Movie 14 Linear vs. PARABOLIC test (audio and still).mp4"],
       choices: ["1", "2"],
-     button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"]
+     button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+     margin_vertical: '-10px',
+      margin_horizontal: '200px',
+     
 };
 
 
@@ -106,10 +122,13 @@ var stim2A =
 }; 
      var stim3C =
 {
-      type: jsPsychImageButtonResponse,
+      type: jsPsychVideoButtonResponse,
      stimulus: ["stimuli/Movie 17 LINEAR vs. sinusoidal test (audio and still).mp4"],
        choices: ["1", "2"],
-     button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
+     button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+     margin_vertical: '-10px',
+      margin_horizontal: '200px',
+    
 };
 
 
@@ -125,10 +144,13 @@ var stim2A =
 }; 
     var stim4C =
 {
-      type: jsPsychImageButtonResponse,
+      type: jsPsychVideoButtonResponse,
      stimulus: ["stimuli/Movie 20 linear vs. SINUSOIDAL test (still and movie).mp4"],
       choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
+      button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+      margin_vertical: '-10px',
+      margin_horizontal: '200px',
+      
 };
 
     
@@ -145,10 +167,13 @@ var stim2A =
 };
     var stim5C =
 {
-    type: jsPsychImageButtonResponse,
+    type: jsPsychVideoButtonResponse,
        stimulus: ["stimuli/Movie 23 PARABOLIC vs. sinusoidal test (still and movie).mp4"],
        choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
+      button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+      margin_vertical: '-10px',
+      margin_horizontal: '200px',
+    
 };
 
 
@@ -164,61 +189,78 @@ var stim2A =
 };
     var stim6C =
 {
-    type: jsPsychImageButtonResponse,
+    type: jsPsychVideoButtonResponse,
        stimulus: ["stimuli/Movie 26 parabolic vs. SINUSOIDAL test (still and audio).mp4"],
        choices: ["1", "2"],
-      button_html: ["<img src='stimuli/stripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/redbutton.png' width='150' height='150'></img>"],
+      button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+      margin_vertical: '-10px',
+      margin_horizontal: '200px',
+    
 };
-  
-
-    // STEP 2: put stimuli into trials
-    var trial1 = []
-    trial1.push(stim1A)
-    trial1.push(stim1B)
-    trial1.push(stim1C) // audio seems to not exist for this video...
-    trial1.push(stim1D) // THIS IS 'GREAT JOB' :) (need Laura to do one small recording)
-
-    var trial2 = []
-    trial2.push(stim2A)
-    trial2.push(stim2B)
-    trial2.push(stim2C)
-    trial2.push(stim1D) 
-
-    var trial3 = []
-    trial3.push(stim3A)
-    trial3.push(stim3B)
-    trial3.push(stim3C)
-    trial3.push(stim1D) 
-
-    var trial4 = []
-    trial4.push(stim4A)
-    trial4.push(stim4B)
-    trial4.push(stim4C)
-    trial4.push(stim1D) 
-
-    var trial5 = []
-    trial5.push(stim5A)
-    trial5.push(stim5B)
-    trial5.push(stim5C)
-    trial5.push(stim1D) 
-
-    var trial6 = []
-    trial6.push(stim6A)
-    trial6.push(stim6B)
-    trial6.push(stim6C)
-    trial6.push(stim1D) 
 
 
-    // Put trials into a list
-    timeline= timeline.concat(trial1, trial2, trial3, trial4, trial5, trial6)
-    // shuffle the list of trials (currently not seeming to work)
-    var myArray = [trial1,trial2,trial3,trial4,trial5,trial6];
-    var shuffledArray = jsPsych.randomization.repeat(myArray, 1, false); 
+ // STEP 2: put stimuli into trials
+ var trial1 = []
+ trial1.push(stim1A)
+ trial1.push(stim1B)
+ trial1.push(stim1C) // audio seems to not exist for this video...
+ trial1.push(stim1D) // THIS IS 'GREAT JOB' :) (need Laura to do one small recording)
+
+ var trial2 = []
+ trial2.push(stim2A)
+ trial2.push(stim2B)
+ trial2.push(stim2C)
+ trial2.push(stim1D)
+
+ var trial3 = []
+ trial3.push(stim3A)
+ trial3.push(stim3B)
+ trial3.push(stim3C)
+ trial3.push(stim1D)
+
+ var trial4 = []
+ trial4.push(stim4A)
+ trial4.push(stim4B)
+ trial4.push(stim4C)
+ trial4.push(stim1D)
+
+ var trial5 = []
+ trial5.push(stim5A)
+ trial5.push(stim5B)
+ trial5.push(stim5C)
+ trial5.push(stim1D)
+
+ var trial6 = []
+ trial6.push(stim6A)
+ trial6.push(stim6B)
+ trial6.push(stim6C)
+ trial6.push(stim1D)
+
+ // var end =
+ //       {type: jsPsychVideoKeyboardResponse,
+ //       stimulus: ["stimuli/MOVIE -- THE END.m4v"]}
+ //       timeline = timeline.push(end);
+ //  StartingSepts: DEFINE TIMELINE
+ //var timeline = [];
+ // Put trials into a list
+ trials = [trial1, trial2, trial3, trial4, trial5, trial6]
+ rand_order = jsPsych.randomization.shuffle(trials)
+timeline = timeline.concat(rand_order.flat())
+ /* timeline= timeline.concat(jsPsych.randomization.shuffle(trial1, trial2, trial3, trial4, trial5, trial6)); */
+ // shuffle the list of trials (currently not seeming to work)
+ /* var myArray = [trial1,trial2,trial3,trial4,trial5,trial6];
+  *    var shuffledArray = jsPsych.randomization.shuffle(myArray); */
     console.log(timeline)
 
-    var end =
-          {type: jsPsychVideoKeyboardResponse,
-          stimulus: ["stimuli/MOVIE -- THE END.m4v"]}
+
+
+// var debrief = [{
+//     type: text,
+//     text: "The goal of this study is to understand what visual features children use in combination with their background knowledge to identify the underlying structure of causes and effects. \n\nDuring the game you and your child played, we asked children about their intuitions about multiple different features: we asked whether they thought certain flowers bloom using different lights to investigate how the blooming might depend on how much lights change in brightness, how many times lights go from on to off, and how fast or slow lights change. \n\nNone of these features have been tested before on children of this age, so we are interested in what your child's intuitions tell them about how these different stories are linked, rather than whether or not they chose what you might have considered to be the correct answer. By understanding which features are useful and intuitive to children, we can understand more about how they can use these rich features to draw connections between objects as a way to make sense of their world. \n\nThank you so much for participating! You will be emailed a $5 Amazon gift card within 3 days of participation. Please don’t hesitate to contact me at nhcoates@mit.edu if you have any additional questions or feedback."
+// },
+// {type: text,
+// text: "Thank you for participating in our study!"}]
+
 
   // var trial1 = [
   //   {
@@ -329,12 +371,13 @@ var stim2A =
          stimulus: "done",
 
          on_start: function() {
-             saveData('test', jsPsych.data.get().csv());
+             saveData(crypto.randomUUID(), jsPsych.data.get().csv());
          }
      }
 
      return out
  }
+
  timeline.push(done())
   jsPsych.run(timeline);
 
