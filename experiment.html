@@ -28,57 +28,63 @@
 
 const jsPsych = initJsPsych({override_safe_mode: true});
 var timeline = [];
-var welcome = [
-      {type: jsPsychVideoButtonResponse,
-      stimulus: ["stimuli/Move 1 - Welcome to the Greenhouse.mp4"],
-    choices: ["1"],
-    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false},
 
-      {type: jsPsychVideoButtonResponse,
+ var begin = { type: jsPsychHtmlKeyboardResponse,
+               stimulus: "<h4>Press any key to begin!</h4>"}
+ timeline.push(begin)
+
+
+ var welcome = [
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Move 1 - Welcome to the Greenhouse.mp4"],
+      choices: ["1"],
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: false},
+
+     {type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/Movie 2 - Inside the greenhouse ....mp4"],
       choices: ["1"],
-    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false},
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: false},
 
-      {type: jsPsychVideoButtonResponse,
+     {type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/Movie 3 -- the flowers bloom because of special lights.mp4"],
       choices: ["1"],
-    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false},
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: false},
 
-      {type: jsPsychVideoButtonResponse,
+     {type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/now you see two lights.mp4"],
       choices: ["1"],
-    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false},
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: false},
 
-      {type: jsPsychVideoButtonResponse,
+     {type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/Movie 5 There are also two sets of flowers.mp4"],
       choices: ["1"],
-    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false}],
-      timeline = timeline.concat(welcome);
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: false}],
+     timeline = timeline.concat(welcome);
 
  var inclusiontrial = [
      {type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/Movie 6 Let's try it.mp4"],
       choices: ["1"],
-    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false},
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: false},
      {type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/Movie 7 Inclusion question (picture plus audio).mp4"],
       choices: ["1", "2"],
       button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
       margin_vertical: '-10px',
       margin_horizontal: '200px',
-    },
+     },
 
      {type: jsPsychVideoButtonResponse,
       stimulus: ["stimuli/Movie 8 Great job.mp4"],
       choices: ["1"],
-    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
-    response_allowed_while_playing: false}];
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: false}];
 
  timeline = timeline.concat(inclusiontrial)
 
