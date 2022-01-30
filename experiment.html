@@ -22,6 +22,7 @@
 
 const jsPsych = initJsPsych({override_safe_mode: true});
 var timeline = [];
+var UID = createUID();
 
  var consent = {
      type: jsPsychSurveyHtmlForm,
@@ -415,18 +416,18 @@ var stim2A =
       button_html: ["<img src='stimuli/purplearrow.png'></img>"],
       response_allowed_while_playing: true,
       on_start: function() {
-          saveData(getFormattedDate, jsPsych.data.get().csv());
+          saveData(createUID(), jsPsych.data.get().csv());
       }
      }
      timeline.push(end);
 
 
  var debrief = 
-	{type: jsPsychHtmlKeyboardResponse,
-	stimulus: "We showed your child flowers and lights that changed in three different ways. One pair of flowers and lights started closed/dark and then gradually opened/got brighter (linear functions).  <br><br>One pair started open/bright then gradually closed/dimmed and then opened/brightened again (parabolic functions). And one pair of flowers and lights cycled back and forth from open/bright to closed/dimmed.  <br><br>On each test trial, children saw the flowers displaying one function (e.g., linear) and then a contrast between lights displaying two different functions (e.g., linear and parabolic).  <br><br>We wanted to know if children would match the function of the light with the function of the flowers. <br><br>If you want to learn more about studies similar to this one, please visit our lab website: eccl.mit.edu. <br><br><br><b><center>The experiment is complete. Please close this window.</center></b>",
-choices: ["jsPsych.NO_KEYS"]
-}
-timeline.push(debrief);
+	   {type: jsPsychHtmlKeyboardResponse,
+	    stimulus: "We showed your child flowers and lights that changed in three different ways. One pair of flowers and lights started closed/dark and then gradually opened/got brighter (linear functions).  <br><br>One pair started open/bright then gradually closed/dimmed and then opened/brightened again (parabolic functions). And one pair of flowers and lights cycled back and forth from open/bright to closed/dimmed.  <br><br>On each test trial, children saw the flowers displaying one function (e.g., linear) and then a contrast between lights displaying two different functions (e.g., linear and parabolic).  <br><br>We wanted to know if children would match the function of the light with the function of the flowers. <br><br>If you want to learn more about studies similar to this one, please visit our lab website at <a href=https://eccl.mit.edu>https://eccl.mit.edu</a>. <br><br><br><b><center>The experiment is complete. Your unique ID code is " + UID + ". Please send this ID to <a href=\"mailto:nhcoates@mit.edu\">nhcoates@mit.edu</a>, then close this window.</center></b>",
+      choices: ["jsPsych.NO_KEYS"]
+     }
+ timeline.push(debrief);
 
  /* timeline= timeline.concat(jsPsych.randomization.shuffle(trial1, trial2, trial3, trial4, trial5, trial6)); */
  // shuffle the list of trials (currently not seeming to work)
@@ -442,14 +443,11 @@ timeline.push(debrief);
          data: data
      }));
  }
- function getFormattedDate() {
-
-     var d = new Date();
-
-     d = d.getFullYear() + "-" + ('0' + (d.getMonth() + 1)).slice(-2) + "-" + ('0' + d.getDate()).slice(-2) + "_" + ('0' + d.getHours()).slice(-2) + "\:" + ('0' + d.getMinutes()).slice(-2) + "\:" + ('0' + d.getSeconds()).slice(-2);
-
-     return d;
+ function createUID() {
+     UID = "T" + Date.now() + "_K" + Math.floor((Math.random() * 100000000) + 1);
+     return UID
  }
+
 
 timeline.splice(20, 0, halfway)
 
