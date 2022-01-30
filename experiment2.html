@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My experiment</title>
+  <script src="jspsych/jspsych.js"></script>
+  <script src="jspsych/plugin-video-keyboard-response.js"></script>
+  <script src="jspsych/plugin-image-keyboard-response.js"></script>
+  <script src="jspsych/plugin-image-button-response.js"></script>
+  <script src="jspsych/plugin-html-keyboard-response.js"></script>
+  <script src="jspsych/plugin-video-button-response.js"></script>
+  <script src="jspsych/plugin-instructions.js"></script>
+  <script src="jspsych/plugin-survey-html-form.js"></script>
+
+  <script src="jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href = "experiment.css">
+  <link rel="icon" type="image/x-icon" href="stimuli/favicon.ico">
+
+</head>
+
+<body></body>
+<script>
+  //stimuli = [["stimuli/trial1.mp4", "stimuli/image1.png"]]
+  //order = shuffle(stimuli)
+
+  // for (trial=0; trial<stimuli.length; trials++)
+              // {
+                // vid = order[trial][0]
+                // img = order[trial][1]
+
+
+const jsPsych = initJsPsych({override_safe_mode: true});
+var timeline = [];
+
+ var begin = { type: jsPsychHtmlKeyboardResponse,
+               stimulus: "<center><h1>Press any key to begin!</h1></center>"}
+ timeline.push(begin)
+
+ var consent = {
+     type: jsPsychSurveyHtmlForm,
+     html: "<h1><u>Consent to participate in non-biomedical research</u></h1> <p> Because this is a University research project, we ask for your informed consent.</p> <b>Participation and withdrawal</b> <p>Your child's participation in this study is completely voluntary and you are free to choose whether or not he or she should participate. If you choose to allow your child's participation, you may subsequently withdraw your child from it at any time without penalty or consequences of any kind. The investigator may also withdraw your child if circumstances arise that warrant doing so. You may remain with your child throughout the entire session.</p> <b>Emergency care and compensation for injury</b> <p>If you feel you or your child has suffered an injury, which may include emotional trauma, as a result of participating in this study, please contact the person in charge of the study as soon as possible. In the event you suffer such an injury, M.I.T. may provide itself or arrange for the provision of, emergency transport or medical treatment, including emergency treatment and follow-up care, as needed, or reimbursement for such medical services. M.I.T. does not provide any other form of compensation for injury. In any case, neither the offer to provide medical assistance, nor the actual provision of medical services shall be considered an admission of fault or acceptance of liability. Questions regarding this policy may be directed to MIT's Insurance Office, (617) 253-2823. Your insurance carrier may be billed for the cost of emergency transport or medical treatment, if such services are determined not to be directly related to your participation in this study.</p> <b>Identification of Investigators</b> <p>If you or your child have any questions about this research, you may contact Professor Laura Schulz at <a href='mailto:lschulz@mit.edu'>lschulz@mit.edu</a> (617) 253-7957. MIT Department of Brain and Cognitive Sciences, 46-4011; 77 Massachusetts Ave., Cambridge, MA 02139.</p> <div class='button horizcentered' id='downloadconsent' class='button' type='button' onClick='window.open(\"stimuli/InformedConsent.pdf\")'><u>Download consent document</u></div> <div style='background-color:#b1e4f0'> <h3><u>Agreement:</u></h3> <p>I understand the information described in this brochure. My questions have been answered to my satisfaction and I agree to let my child participate in this study. I have been given a copy of this form.</p> <b>Please consent by entering your child's age (in years) and their birthday (Month & Year). Then, click 'I agree' below to continue. Otherwise, please exit the study now by closing this window.</b> <br><br> <form id='consentform' name='frm' > <input type='text' name='UID' hidden> <input type='text' name='consent' hidden> <table> <tr> <td>How old is your child?</td> <td>&nbsp;&nbsp;<select id='ageselector' name='childage'></select>&nbsp;(years old)<label for='childage' class='error'></label></td> </tr> <tr> <td>When was your child born?</td> <td>&nbsp;&nbsp;<select id='monthselector' name='dobmonth'></select>(month)<label for='dobmonth' class='error'></label></td> </tr> <tr> <td></td> <td>&nbsp;&nbsp;<select id='yearselector' name='dobyear'></select>(year)<label for='dobyear' class='error'></label></td> </tr> </table> <br>               <input class='button horizcentered' type='submit' value='I agree' /> </div> </form> </div> </div> ", /* cont_btn: "start", */
+     on_load: function() {
+         // use jquery to set the age selector from 1-100
+         var ageselect = $('#ageselector');
+         ageselect.append($('<option></option>').val('').html('--'))
+         for (i = 1; i <= 18; i++) {
+             ageselect.append($('<option></option>').val(i).html(i))
+         }
+
+         var monthselect = $('#monthselector');
+         monthselect.append($('<option></option>').val('').html('--'))
+         monthselect.append($('<option></option>').val(1).html('January'))
+         monthselect.append($('<option></option>').val(2).html('February'))
+         monthselect.append($('<option></option>').val(3).html('March'))
+         monthselect.append($('<option></option>').val(4).html('April'))
+         monthselect.append($('<option></option>').val(5).html('May'))
+         monthselect.append($('<option></option>').val(6).html('June'))
+         monthselect.append($('<option></option>').val(7).html('July'))
+         monthselect.append($('<option></option>').val(8).html('August'))
+         monthselect.append($('<option></option>').val(9).html('September'))
+         monthselect.append($('<option></option>').val(10).html('October'))
+         monthselect.append($('<option></option>').val(11).html('November'))
+         monthselect.append($('<option></option>').val(12).html('December'))
+
+         var yearselect = $('#yearselector');
+         yearselect.append($('<option></option>').val('').html('--'))
+         for (i = 2019; i >= 2002; i--) {
+             yearselect.append($('<option></option>').val(i).html(i))
+         }
+
+         $("#jspsych-survey-html-form-next").hide()
+
+     },
+     button_label: "I agree"
+     /* check_fn: isFormComplete */
+ };
+ timeline.push(consent)
+
+
+ function hideAndShowNext() {
+     /* $("#jspsych-video-button-response-button-0").hide()
+      * document.getElementById('jspsych-video-button-response-stimulus').addEventListener('ended', function() {$("#jspsych-video-button-response-button-0").show()}, false); */
+ }
+
+ var welcome = [
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Move 1 - Welcome to the Greenhouse.mp4"],
+      choices: ["1"],
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: true,
+
+      on_load: hideAndShowNext
+     },
+
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 2 - Inside the greenhouse ....mp4"],
+      choices: ["1"],
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: true,
+      on_load: hideAndShowNext
+     },
+
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 3 -- the flowers bloom because of special lights.mp4"],
+      choices: ["1"],
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: true,
+      on_load: hideAndShowNext
+     },
+
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/now you see two lights.mp4"],
+      choices: ["1"],
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: true,
+      on_load: hideAndShowNext
+     },
+
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 5 There are also two sets of flowers.mp4"],
+      choices: ["1"],
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: true,
+      on_load: hideAndShowNext}
+
+ ]
+
+ timeline = timeline.concat(welcome);
+
+ var inclusiontrial = [
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 6 Let's try it.mp4"],
+      choices: ["1"],
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: true,
+      on_load: hideAndShowNext
+     },
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 7 Inclusion question (picture plus audio).mp4"],
+      choices: ["1", "2"],
+      button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+      margin_vertical: '-10px',
+      margin_horizontal: '200px',
+     },
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 8 Great job.mp4"],
+      choices: ["1"],
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: true,
+      on_load: hideAndShowNext
+ }];
+
+ timeline = timeline.concat(inclusiontrial)
+
+// STEP 1: DEFINE ALL UNIQUE STIMULI
+var stim1A = {
+    type: jsPsychVideoButtonResponse,
+    stimulus: ["stimuli/Movie 9 LINEAR vs. parabolic set up.mp4"],
+    choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: true,
+     on_load: hideAndShowNext
+};
+var stim1B = {
+     type: jsPsychVideoButtonResponse,
+     stimulus: ["stimuli/Movie 10 LINEAR vs. Parabolic prompt.mp4"],
+     choices: ["1"],
+     button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+     response_allowed_while_playing: true,
+     on_load: hideAndShowNext
+
+ };
+ var stim1C = {
+     type: jsPsychVideoButtonResponse,
+     stimulus: ["stimuli/Movie 11 LINEAR vs. parabolic test (audio and still).mp4"],
+     choices: ["1", "2"],
+     button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150' width='150' height='150'></img>"],
+     margin_vertical: '-10px',
+    margin_horizontal: '200px',
+ };
+ var stim1D = {
+    type: jsPsychVideoButtonResponse,
+    stimulus: ["stimuli/greatjob!.mp4"],
+    choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: true,
+     on_load: hideAndShowNext
+};
+
+
+var stim2A =
+{
+      type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 12 linear vs. PARABOLIC setup.mp4"],
+      choices: ["1"],
+    button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+    response_allowed_while_playing: true,
+     on_load: hideAndShowNext
+};
+  var stim2B =
+{
+     type: jsPsychVideoButtonResponse,
+     stimulus: ["stimuli/Movie 13 Linear vs. PARABOLIC prompt.mp4"],
+     choices: ["1"],
+     button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+     response_allowed_while_playing: true,
+     on_load: hideAndShowNext
+
+ };
+ var stim2C =
+     {
+      type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/Movie 14 Linear vs. PARABOLIC test (audio and still).mp4"],
+      choices: ["1", "2"],
+     button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+     margin_vertical: '-10px',
+      margin_horizontal: '200px',
+
+};
+
+
+  var stim3A =
+{
+     type: jsPsychVideoButtonResponse,
+     stimulus: ["stimuli/Movie 15 LINEAR vs. sinusoidal setup.mp4"],
+     choices: ["1"],
+     button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+     response_allowed_while_playing: true,
+     on_load: hideAndShowNext
+
+ };
+ var stim3B =
+     {   type: jsPsychVideoButtonResponse,
+         stimulus: ["stimuli/Movie 16 LINEAR vs. sinusoidal prompt.mp4"],
+         choices: ["1"],
+         button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+         response_allowed_while_playing: true,
+         on_load: hideAndShowNext
+
+     };
+ var stim3C =
+     {
+      type: jsPsychVideoButtonResponse,
+     stimulus: ["stimuli/Movie 17 LINEAR vs. sinusoidal test (audio and still).mp4"],
+       choices: ["1", "2"],
+     button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+     margin_vertical: '-10px',
+      margin_horizontal: '200px',
+
+};
+
+
+     var stim4A =
+{
+     type: jsPsychVideoButtonResponse,
+     stimulus: ["stimuli/Movie 18 Linear vs. SINUSOIDAL setup.mp4"],
+     choices: ["1"],
+     button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+     response_allowed_while_playing: true,
+     on_load: hideAndShowNext
+
+ };
+ var stim4B =
+     {
+         type: jsPsychVideoButtonResponse,
+         stimulus: ["stimuli/Movie 19 linear vs. SINUSOIDAL prompt.mp4"],
+         choices: ["1"],
+         button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+         response_allowed_while_playing: true,
+         on_load: hideAndShowNext
+
+     };
+ var stim4C =
+     {
+      type: jsPsychVideoButtonResponse,
+     stimulus: ["stimuli/Movie 20 linear vs. SINUSOIDAL test (still and movie).mp4"],
+      choices: ["1", "2"],
+      button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+      margin_vertical: '-10px',
+      margin_horizontal: '200px',
+
+};
+
+
+
+    var stim5A =
+{
+     type: jsPsychVideoButtonResponse,
+     stimulus: ["stimuli/Movie 21 PARABOLIC vs. sinusoidal setup.mp4"],
+     choices: ["1"],
+     button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+     response_allowed_while_playing: true,
+     on_load: hideAndShowNext
+
+ };
+ var stim5B =
+     {
+         type: jsPsychVideoButtonResponse,
+         stimulus: ["stimuli/Movie 22 PARABOLIC vs. sinusoidal prompt.mp4"],
+         choices: ["1"],
+         button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+         response_allowed_while_playing: true,
+         on_load: hideAndShowNext
+
+     };
+ var stim5C =
+     {
+    type: jsPsychVideoButtonResponse,
+       stimulus: ["stimuli/Movie 23 PARABOLIC vs. sinusoidal test (still and movie).mp4"],
+       choices: ["1", "2"],
+      button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+      margin_vertical: '-10px',
+      margin_horizontal: '200px',
+
+};
+
+
+    var stim6A =
+{
+     type: jsPsychVideoButtonResponse,
+     stimulus: ["stimuli/Movie 24 parabolic vs. SINUSOIDAL setup.mp4"],
+     choices: ["1"],
+     button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+     response_allowed_while_playing: true,
+     on_load: hideAndShowNext
+
+ };
+ var stim6B =
+     {
+         type: jsPsychVideoButtonResponse,
+         stimulus: ["stimuli/Movie 25 parabolic vs. SINUSOIDAL prompt.mp4"],
+         choices: ["1"],
+         button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+         response_allowed_while_playing: true,
+         on_load: hideAndShowNext
+
+     };
+ var stim6C =
+     {
+    type: jsPsychVideoButtonResponse,
+       stimulus: ["stimuli/Movie 26 parabolic vs. SINUSOIDAL test (still and audio).mp4"],
+       choices: ["1", "2"],
+      button_html: ["<img src='stimuli/newstripedbutton.png' width='150' height='150'></img>", "<img src='stimuli/newredbutton.png' width='150' height='150'></img>"],
+      margin_vertical: '-10px',
+      margin_horizontal: '200px',
+
+};
+
+
+ // STEP 2: put stimuli into trials
+ var trial1 = []
+ trial1.push(stim1A)
+ trial1.push(stim1B)
+ trial1.push(stim1C)
+ trial1.push(stim1D) // THIS IS 'GREAT JOB' :)
+
+ var trial2 = []
+ trial2.push(stim2A)
+ trial2.push(stim2B)
+ trial2.push(stim2C)
+ trial2.push(stim1D)
+
+ var trial3 = []
+ trial3.push(stim3A)
+ trial3.push(stim3B)
+ trial3.push(stim3C)
+ trial3.push(stim1D)
+
+ var trial4 = []
+ trial4.push(stim4A)
+ trial4.push(stim4B)
+ trial4.push(stim4C)
+ trial4.push(stim1D)
+
+ var trial5 = []
+ trial5.push(stim5A)
+ trial5.push(stim5B)
+ trial5.push(stim5C)
+ trial5.push(stim1D)
+
+ var trial6 = []
+ trial6.push(stim6A)
+ trial6.push(stim6B)
+ trial6.push(stim6C)
+ trial6.push(stim1D)
+
+ /* StartingSteps: DEFINE TIMELINE */
+ /* Put trials into a list */
+ /* trials = [trial1, trial2, trial3, trial4, trial5, trial6] */
+ trials = [trial1]
+ rand_order = jsPsych.randomization.shuffle(trials)
+ timeline = timeline.concat(rand_order.flat())
+
+ var halfway = {type: jsPsychVideoButtonResponse,
+                stimulus: ["stimuli/halfwaythere.mp4"],
+                choices: ["1"],
+                button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+                on_load: hideAndShowNext}
+
+ var end =
+     {type: jsPsychVideoButtonResponse,
+      stimulus: ["stimuli/MOVIE -- THE END.mp4"],
+      choices: ["1"],
+      button_html: ["<img src='stimuli/purplearrow.png'></img>"],
+      response_allowed_while_playing: true,
+      on_start: function() {
+          saveData(getFormattedDate(), jsPsych.data.get().csv());
+      }
+     }
+     timeline.push(end);
+
+
+ var debrief =
+	{type: jsPsychHtmlKeyboardResponse,
+	stimulus: "The goal of this study is to understand what visual features children use in combination with their background knowledge to identify the underlying structure of causes and effects. \n\nDuring the game you and your child played, we asked children about their intuitions about multiple different features: we asked whether they thought certain flowers bloom using different lights to investigate how the blooming might depend on how much lights change in brightness, how many times lights go from on to off, and how fast or slow lights change. \n\nNone of these features have been tested before on children of this age, so we are interested in what your child's intuitions tell them about how these different stories are linked, rather than whether or not they chose what you might have considered to be the correct answer. By understanding which features are useful and intuitive to children, we can understand more about how they can use these rich features to draw connections between objects as a way to make sense of their world. \n\nThank you so much for participating! You will be emailed a $5 Amazon gift card within 3 days of participation. Please don't hesitate to contact me at nhcoates@mit.edu if you have any additional questions or feedback.",
+choices: ["jsPsych.NO_KEYS"],
+
+  }
+ timeline.push(debrief);
+
+ /* timeline= timeline.concat(jsPsych.randomization.shuffle(trial1, trial2, trial3, trial4, trial5, trial6)); */
+ // shuffle the list of trials (currently not seeming to work)
+ /* var myArray = [trial1,trial2,trial3,trial4,trial5,trial6];
+  *    var shuffledArray = jsPsych.randomization.shuffle(myArray); */
+
+ function saveData(name, data) {
+     var xhr = new XMLHttpRequest();
+     xhr.open('POST', 'record_data.php');
+     xhr.setRequestHeader('Content-Type', 'application/json');
+     xhr.send(JSON.stringify({
+         filename: name,
+         data: data
+     }));
+ }
+ function getFormattedDate() {
+
+     var d = new Date();
+
+     d = d.getFullYear() + "-" + ('0' + (d.getMonth() + 1)).slice(-2) + "-" + ('0' + d.getDate()).slice(-2) + "_" + ('0' + d.getHours()).slice(-2) + "\:" + ('0' + d.getMinutes()).slice(-2) + "\:" + ('0' + d.getSeconds()).slice(-2);
+
+     return d;
+ }
+
+     var done = {
+         type: jsPsychHtmlKeyboardResponse,
+         // stimulus: function() {
+         //     return 'Done - thank you!'
+         //
+         stimulus: "done",
+
+     }
+
+
+ timeline.push(done)
+
+timeline.splice(20, 0, halfway)
+
+  jsPsych.run(timeline);
+
+</script>
+</html>
