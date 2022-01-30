@@ -12,5 +12,17 @@
 }
 
 #jspsych-html-keyboard-response-stimulus {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10%;
+    font-size: 24px;
+    text-align: left;
+}
+
+#jspsych-html-button-response-stimulus {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    /* font-size: 24px; */
     text-align: left;
 }

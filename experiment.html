@@ -2,15 +2,15 @@
 <html>
 
 <head>
-  <title>My experiment</title>
-  <script src="jspsych/jspsych.js"></script>
-  <script src="jspsych/plugin-image-button-response.js"></script>
-  <script src="jspsych/plugin-html-keyboard-response.js"></script>
-  <script src="jspsych/plugin-video-button-response.js"></script>
-  <script src="jspsych/plugin-html-button-response.js"></script>
-  <script src="jspsych/plugin-instructions.js"></script>
-  <script src="jspsych/plugin-survey-html-form.js"></script>
-
+    <title>Alien Greenhouse</title>
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugin-image-button-response.js"></script>
+    <script src="jspsych/plugin-html-keyboard-response.js"></script>
+    <script src="jspsych/plugin-video-button-response.js"></script>
+    <script src="jspsych/plugin-html-button-response.js"></script>
+    <script src="jspsych/plugin-instructions.js"></script>
+    <script src="jspsych/plugin-survey-html-form.js"></script>
+    <script src="jspsych/plugin-preload.js"></script>
   <script src="jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href = "experiment.css">
   <link rel="icon" type="image/x-icon" href="stimuli/favicon.ico">
@@ -23,7 +23,11 @@
 const jsPsych = initJsPsych({override_safe_mode: true});
 var timeline = [];
 var UID = createUID();
-
+ var preload = {
+     type: jsPsychPreload,
+     auto_preload: true
+ }
+ timeline.push(preload)
  var consent = {
      type: jsPsychSurveyHtmlForm,
      html: "<h1><u>Consent to participate in non-biomedical research</u></h1> <p> Because this is a University research project, we ask for your informed consent.</p> <b>Participation and withdrawal</b> <p>Your child's participation in this study is completely voluntary and you are free to choose whether or not he or she should participate. If you choose to allow your child's participation, you may subsequently withdraw your child from it at any time without penalty or consequences of any kind. The investigator may also withdraw your child if circumstances arise that warrant doing so. You may remain with your child throughout the entire session.</p> <b>Emergency care and compensation for injury</b> <p>If you feel you or your child has suffered an injury, which may include emotional trauma, as a result of participating in this study, please contact the person in charge of the study as soon as possible. In the event you suffer such an injury, M.I.T. may provide itself or arrange for the provision of, emergency transport or medical treatment, including emergency treatment and follow-up care, as needed, or reimbursement for such medical services. M.I.T. does not provide any other form of compensation for injury. In any case, neither the offer to provide medical assistance, nor the actual provision of medical services shall be considered an admission of fault or acceptance of liability. Questions regarding this policy may be directed to MIT's Insurance Office, (617) 253-2823. Your insurance carrier may be billed for the cost of emergency transport or medical treatment, if such services are determined not to be directly related to your participation in this study.</p> <b>Identification of Investigators</b> <p>If you or your child have any questions about this research, you may contact Professor Laura Schulz at <a href='mailto:lschulz@mit.edu'>lschulz@mit.edu</a> (617) 253-7957. MIT Department of Brain and Cognitive Sciences, 46-4011; 77 Massachusetts Ave., Cambridge, MA 02139.</p> <div class='button horizcentered' id='downloadconsent' class='button' type='button' onClick='window.open(\"stimuli_reduced/InformedConsent.pdf\")'><u>Download consent document</u></div> <div style='background-color:#b1e4f0'> <h3><u>Agreement:</u></h3> <p>I understand the information described in this brochure. My questions have been answered to my satisfaction and I agree to let my child participate in this study. I have been given a copy of this form.</p> <b>Please consent by entering your child's age (in years) and their birthday (Month & Year). Then, click 'I agree' below to continue. Otherwise, please exit the study now by closing this window.</b> <br><br> <form id='consentform' name='frm' > <input type='text' name='UID' hidden> <input type='text' name='consent' hidden> <table> <tr> <td>How old is your child?</td> <td>&nbsp;&nbsp;<select id='ageselector' name='childage'></select>&nbsp;(years old)<label for='childage' class='error'></label></td> </tr> <tr> <td>When was your child born?</td> <td>&nbsp;&nbsp;<select id='monthselector' name='dobmonth'></select>(month)<label for='dobmonth' class='error'></label></td> </tr> <tr> <td></td> <td>&nbsp;&nbsp;<select id='yearselector' name='dobyear'></select>(year)<label for='dobyear' class='error'></label></td> </tr> </table> <br>               <input class='button horizcentered' type='submit' value='I agree' /> </div> </form> </div> </div> ",
